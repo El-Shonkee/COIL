@@ -1,0 +1,3 @@
+Aca vamos a revisar los primeros cambios realizados con git
+
+parte 1
