@@ -1,32 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=MedievalSharp&display=swap');
+
 body{
     color:#ffffff;
     text-align:center;
-    font-size:16px;
     margin:0;
     padding:0;
-    background-color: rgb(81, 79, 79);
     display:grid;
     place-items: center;
+    background-image: url('textures/map.png');
+    background-size: cover;
 }
 
 #tittle{
-    font-family: 'Abril Fatface';
+    font-family: 'MedievalSharp', cursive;
     font-weight: 40;
     font-size: 50px;
     text-align: center;
+    animation: float 4s ease-in-out infinite;
+    border-radius: 25px;
+    background-image: url('textures/wood.png');
+    background-size:contain;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    
+    
+}
+
+#welcome-message{
+    display: inline-block;
+    width: 50vw;
+    max-width: 250px;
+    min-width: 200px;
+    z-index: 9;
+    margin: auto;
+    animation: float 4s ease-in-out infinite;
+    background-image: url('textures/wood.png');
+    background-size:cover;
+    border-radius: 20px; 
+    font-family: 'MedievalSharp', cursive;
+    padding: 5px;
+    font-size: 25px;
 }
 
 #first-message{
     display:grid;
     place-items: center;
-    width: 40%;
+    width: 75%;
     margin: auto;
+    margin-top: 15px;
+    border-radius: 10px;
+    background-image: url('textures/wood.png');
+    background-size:contain; 
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 #welcome-container{
     width:70%;
     padding:0;
 }
+
+.character{
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+#introduction{
+    font-size: 20px;
+    font-family: 'MedievalSharp', cursive;
+    padding: 10px;
+    
+}
+
+@keyframes float {
+	0% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+	50% {
+		box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+		transform: translatey(-20px);
+	}
+	100% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+}
+
+.select-character{   
+    justify-content: center;
+    align-items: center;
+}
+
+.cards{
+    display: flex;
+    gap: 10px;
+}
+
+.character-card{
+    width: 150px;
+    height: 150px;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    margin: 5px;
+    background-image: url('textures/wood.png');
+    background-size: cover;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.character-card img{
+    width: 60px;
+}
+
+input{
+    display: none;
+}
+.char-name{
+    margin: auto;
+    font-size: 25px;
+}
+
+#character-button{
+    background-image: url('textures/wood.png');
+    background-size: cover;
+    color: white;
+    font-family: 'MedievalSharp', cursive;
+    width: 200px;
+    height: 50px;
+    border-radius: 15px;
+    font-size: 30px;
+    border: none;
+    margin-left: 00px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+#exit-button {
+    margin-top: -48px;
+    margin-left: 700px;
+    background-image: url('textures/wood.png');
+    background-size: cover;
+    color: white;
+    font-family: 'MedievalSharp', cursive;
+    width: 120px;
+    height: 50px;
+    border-radius: 15px;
+    font-size: 20px;
+    border: none;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+#exit-button:hover{
+    background: black;
+}
+
+#character-button:hover{
+    background: black;
+}
+
+.character-card:hover{
+    background: black;
+}
+
+
 
 
 
