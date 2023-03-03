@@ -7,34 +7,62 @@
         
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
-        
+       
         <title>English Hunt</title>
         <link rel="stylesheet" href="css\styles.css">
+        <script src="JS/main.js"></script>
     </head>
 
     <body>
-        <div id="welcome-container">
-            
-            <h1 id="tittle"> English Hunt 🗡️🛡️🏹🔨🦯 </h1>
+        
+        <section id="welcome-container">
+            <section id="headers">
+                <h1 id="tittle">🐲 English Hunt 🗡️ </h1>
+                <h1 id="welcome-message"> Welcome adventurer </h1>
+            </section>
             
             <div id="first-message">
-                <h1 class = "welcome-message" id="welcome-message"> Welcome fighter</h1>
+                
                 <p class="welcome-message" id="introduction"> Bienvenido a este mundo en donde usaras tus conocimientos en ingles para vencer a los diferentes enemigos que se encuentran en el mapa. Este sera nuestra unica interacción en español, asi que preparate para aprender y pelear!! ⚔️⚔️ </p>
-            </div>
-                
-                <label for="warrior">Warrior 🛡️</label>
-                <input type="radio" id="character" class="character" >
-                
-                <label for="mage">Mage🦯</label>
-                <input type="radio" id="character" class="character" >
-                
-                <label for="archer">Archer 🏹</label>
-                <input type="radio" id="character" class="character" >
 
-                <br>
-                
-                <button id="start-button"> Let's start ☠️</button>
             </div>
+        </section>
+           
+            <!-- Seleccion de persojane -->
+            <section id="select-character">   
+                <p id= "selection-message">Select your character</p>                        
+                <div class="cards">
+                    <!-- warrior -->
+                    <label class ="character-card" for="warrior">   
+                        <p class ="char-name">Warrior 🛡️</p> 
+                        <img src="images/warrior.png" alt="warrior">         
+                    </label>
+                    <input type="radio" id="warrior" class="character">
+                    <!-- Mage -->
+                    <label class ="character-card" for="mage"> 
+                        <p class ="char-name"> Mage 🦯</p>
+                        <img src="images/mage.png" alt="mage">
+                    </label>
+                    <input type="radio" id="mage" class="character">
+                    <!-- Archer -->
+                    <label class ="character-card" for="archer">
+                        <p class ="char-name"> Archer 🏹</p>
+                        <img src="images/archer.png" alt="archer">
+                    </label>
+                    <input type="radio" id="archer" class="character">
+                </div>
+                <button id="character-button"> Let's start ☠️ 
+            </section>    
+
+            <section id="showMap">
+                <h1>middle land</h1>
+                <canvas id="canvas"></canvas>
+            </section>
+            <button></button>
+
+            <section id="exit">
+                <button id="exit-button">Exit game</button>
+            </section>        
+            
     </body>
 </html>
