@@ -20,17 +20,30 @@ let interval;
 let mapBackground = new Image();
 mapBackground.src = '/images/mapPlaying.png';
 
+let warriorPhoto= new Image();
+warriorPhoto.src = 'images/warrior.png'
+let magePhoto = new Image();
+magePhoto.src = 'images/mage.png'
+let archerPhoto= new Image();
+archerPhoto.src = 'images/archer.png'
+
+let characterSelected;
+
 class Player{
     constructor(name, photo, points){
         this.name = name;
         this.photo = photo ;
         this.points = points;
+        this.x = 50;
+        this.y = 150;
+        this.height = 30;
+        this.width = 35
     } 
 }
 
-let warrior = new Player("Warrior", "/workspaces/COIL/COIL/images/warrior.png", 0);
-let mage = new Player("Mage", "/workspaces/COIL/COIL/images/mage.png", 0);
-let archer = new Player("Archer", "/workspaces/COIL/COIL/images/archer.png", 0);
+let warrior = new Player("Warrior", warriorPhoto, 0);
+let mage = new Player("Mage", magePhoto, 0);
+let archer = new Player("Archer", archerPhoto, 0);
 
 players.push(warrior,mage,archer);
 
@@ -44,21 +57,33 @@ function startGame(){
 }
 
 function selectCharacter(){
- 
+    
+    isSelected = false;
+    
     if (inputWarrior.checked) {
         alert('You select the warrior');
+        characterSelected = warrior;
+        isSelected = true;
     } else if (inputMage.checked) {
         alert('You select the mage');
+        characterSelected = mage;
+        isSelected = true;
     } else if (inputArcher.checked) {
         alert('You select the archer');
+        characterSelected = archer;
+        isSelected = true;
     } else {
         alert('You should select a hero');
     }
+        
+    if(isSelected){
+        sectionSelectCharacter.style.display="none"
+        sectionWelcomeContainer.style.display="none"
+        showMap.style.display = "flex"
+        startMap();
+    }
+    console.log(characterSelected);
     
-    sectionSelectCharacter.style.display="none"
-    sectionWelcomeContainer.style.display="none"
-    showMap.style.display = "flex"
-    startMap();
 }
 
 function exit() {
@@ -68,17 +93,54 @@ function exit() {
 function drawMap(){
     ctx.clearRect(0,0,  mapcanvas.Width, mapcanvas.Width);
     ctx.drawImage(
-            mapBackground,
-            0,
-            0,
-            mapcanvas.width,
-            mapcanvas.height);
+        mapBackground,
+        0,
+        0,
+        mapcanvas.width,
+        mapcanvas.height);
+    ctx.drawImage(
+       characterSelected.photo,
+        characterSelected.x,
+        characterSelected.y,
+        characterSelected.height,
+        characterSelected.width
+    );
 }
 
 function startMap(){
-    mapcanvas.height = 600;
-    mapcanvas.width = 800;
-   interval = setInterval(drawMap,10);
+    mapcanvas.height = window.innerHeight;
+    mapcanvas.width = window.innerWidth;
+    interval = setInterval(drawMap,10);
+    window.addEventListener("keydown",move);
 }
+
+function moveRight(){
+    characterSelected.x += 5;
+}
+function moveLeft(){
+    characterSelected.x -= 5;
+}
+function moveUp(){
+    characterSelected.y -= 5;
+}
+function moveDown(){
+    characterSelected.y += 5;
+}
+
+function move(event){
+    switch(event.key){
+        case 'ArrowUp': moveUp()
+            break
+        case 'ArrowDown':moveDown()
+            break
+        case 'ArrowLeft':moveLeft()
+            break
+        case 'ArrowRight':moveRight()
+            break
+        default:
+            break
+    }
+}
+
 
 window.addEventListener('load', startGame);
