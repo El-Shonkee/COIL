@@ -35,17 +35,17 @@ class Player{
         this.photo = photo ;
         this.points = points;
         this.x = 50;
-        this.y = 150;
+        this.y = 160;
         this.height = 30;
-        this.width = 35
+        this.width = 35;
+        this.velocityX = 5;
+        this.velocityY = 5;
     } 
 }
 
 let warrior = new Player("Warrior", warriorPhoto, 0);
 let mage = new Player("Mage", magePhoto, 0);
 let archer = new Player("Archer", archerPhoto, 0);
-
-players.push(warrior,mage,archer);
 
 function startGame(){
     
@@ -83,7 +83,6 @@ function selectCharacter(){
         startMap();
     }
     console.log(characterSelected);
-    
 }
 
 function exit() {
@@ -103,28 +102,31 @@ function drawMap(){
         characterSelected.x,
         characterSelected.y,
         characterSelected.height,
-        characterSelected.width
-    );
+        characterSelected.width);
 }
 
 function startMap(){
-    mapcanvas.height = window.innerHeight;
+    mapcanvas.height = 800;
     mapcanvas.width = window.innerWidth;
     interval = setInterval(drawMap,10);
     window.addEventListener("keydown",move);
 }
 
 function moveRight(){
-    characterSelected.x += 5;
+    characterSelected.x += characterSelected.velocityX;
+    console.log(characterSelected.x)
 }
 function moveLeft(){
-    characterSelected.x -= 5;
+    characterSelected.x -= characterSelected.velocityX;
+    console.log(characterSelected.x)
 }
 function moveUp(){
-    characterSelected.y -= 5;
+    characterSelected.y -= characterSelected.velocityY;
+    console.log(characterSelected.y)
 }
 function moveDown(){
-    characterSelected.y += 5;
+    characterSelected.y += characterSelected.velocityY;
+    console.log(characterSelected.y)
 }
 
 function move(event){
@@ -141,6 +143,5 @@ function move(event){
             break
     }
 }
-
 
 window.addEventListener('load', startGame);
