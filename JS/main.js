@@ -6,10 +6,8 @@ const buttonLetsStart = document.getElementById("character-button");
 const buttonExit = document.getElementById("exit-button");
 const sectionExit =document.getElementById("exit");
 
-
 const showMap = document.getElementById('showMap');
 const mapcanvas = document.getElementById('mapcanvas');
-
 
 /* Inputs characters */
 const inputWarrior = document.getElementById("warrior");
@@ -18,11 +16,9 @@ const inputArcher = document.getElementById("archer");
 
 let players = [];
 let ctx = mapcanvas.getContext('2d');
-let mapBackground = new Image();
-mapBackground.src = '/workspaces/COIL/COIL/images/mapPlaying.png';
-let mapWidth = window.innerWidth -20;
-let mapHeight = mapWidth * 600/800;
 let interval;
+let mapBackground = new Image();
+mapBackground.src = '/images/mapPlaying.png';
 
 class Player{
     constructor(name, photo, points){
@@ -56,7 +52,7 @@ function selectCharacter(){
     } else if (inputArcher.checked) {
         alert('You select the archer');
     } else {
-        alert('Selecciona una mascota');
+        alert('You should select a hero');
     }
     
     sectionSelectCharacter.style.display="none"
@@ -69,13 +65,20 @@ function exit() {
     location.reload();
 }
 
-window.addEventListener('load', startGame);
-
 function drawMap(){
-    ctx.clearRect(0,0,mapWidth,mapHeight);
-    ctx.drawImage(mapBackground,0,0,mapWidth,mapHeight);
+    ctx.clearRect(0,0,  mapcanvas.Width, mapcanvas.Width);
+    ctx.drawImage(
+            mapBackground,
+            0,
+            0,
+            mapcanvas.width,
+            mapcanvas.height);
 }
 
 function startMap(){
-    interval = setInterval(drawMap,50);
+    mapcanvas.height = 600;
+    mapcanvas.width = 800;
+   interval = setInterval(drawMap,10);
 }
+
+window.addEventListener('load', startGame);
